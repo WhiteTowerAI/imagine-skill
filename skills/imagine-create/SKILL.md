@@ -5,9 +5,7 @@ description: Step-by-step workflow for creating images and videos with vofy-cli,
 
 # Creating Media with vofy-cli
 
-This skill guides you through the complete media creation workflow with vofy-cli, the CLI for [Vofy](https://www.vofy.art/) — from understanding the user's need to delivering a downloaded result.
-
-If `vofy` is missing, stop and tell the user to install it with `npm install -g vofy-cli@0.1.3` before continuing.
+This skill guides you through the complete media creation workflow — from understanding the user's need to delivering a downloaded result.
 
 ## Workflow
 
@@ -133,7 +131,7 @@ After a successful create command:
 - With `--download-to ./output`: files are saved to the specified directory
 - Without a download flag: the sync output includes generated resource URLs by default
 - With `--result-url`: URLs are printed explicitly after completion
-- For async tasks: use `vofy task <id_or_prefix> --download-to ./output` to download later
+- For async tasks: use `vofy task <id> --download-to ./output` to download later
 
 ## Validation Gotchas
 
@@ -176,7 +174,7 @@ These are the most common causes of failed generations. The model docs have full
 | "Insufficient credits" | Tell user to check `vofy billing` |
 | "Model not found" | Run `vofy models` to list available models |
 | "Invalid parameter" | Check model capabilities with `vofy models <name>` |
-| Task fails/times out | Check `vofy task <id_or_prefix>` for error details |
+| Task fails/times out | Check `vofy task <id>` for error details |
 
 ## Detailed Examples
 

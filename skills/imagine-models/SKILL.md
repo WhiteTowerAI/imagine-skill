@@ -5,7 +5,7 @@ description: Model selection guide for vofy-cli — helps choose the right image
 
 # Model Selection Guide
 
-Use this skill to pick the right model for a vofy-cli task on [Vofy](https://www.vofy.art/). For full parameter details, see the supporting files.
+Use this skill to pick the right model for a vofy-cli task. For full parameter details, see the supporting files.
 
 ## Quick Recommendations
 

@@ -5,11 +5,11 @@ description: vofy-cli overview and command quick-reference for AI agents to gene
 
 # vofy-cli — AI Media Generation CLI
 
-vofy-cli is a command-line tool for [Vofy](https://www.vofy.art/), the media generation platform. It supports 21 models across image generation (text-to-image, image-to-image, inpainting) and video generation (text-to-video, image-to-video, interpolation, motion control, and more).
+vofy-cli is a command-line tool for the Vofy media generation platform. It supports 21 models across image generation (text-to-image, image-to-image, inpainting) and video generation (text-to-video, image-to-video, interpolation, motion control, and more).
 
 ## Prerequisites
 
-1. Install vofy-cli with `npm install -g vofy-cli@0.1.3`
+1. vofy-cli must be installed and on PATH
 2. User must be authenticated: `vofy login`
 3. Verify with: `vofy status`
 
@@ -18,7 +18,7 @@ vofy-cli is a command-line tool for [Vofy](https://www.vofy.art/), the media gen
 When using vofy-cli as an AI agent, always:
 
 - Use `--yes` flag on create commands to skip interactive route picker
-- Use `--plain` flag on `vofy tasks` to avoid the interactive task browser in TTY sessions
+- Use `--plain` flag on `vofy tasks` to avoid interactive browser
 - Use `--download-to <path>` to save results to a known location
 - Never run `vofy login` — it requires a browser. If auth fails, tell the user to run it manually.
 
@@ -29,11 +29,11 @@ When using vofy-cli as an AI agent, always:
 | `vofy status` | Show account summary, credits balance, plan |
 | `vofy image create` | Create an image generation task |
 | `vofy video create` | Create a video generation task |
-| `vofy task <id_or_prefix>` | Show task detail, resource URLs, or download results |
+| `vofy task <id>` | Show task detail, download results |
 | `vofy tasks --plain` | List recent tasks in plain text |
 | `vofy models` | List all available models |
 | `vofy models <name>` | Show detailed model capabilities |
-| `vofy billing` | Open pricing or switch plans |
+| `vofy billing` | Manage subscription plan |
 
 ## Typical Workflow
 
@@ -51,10 +51,6 @@ vofy image create --model seedream-4.5 --prompt "a sunset over mountains" --yes 
 vofy tasks --plain --type image
 vofy task <task_id> --download-to ./output
 ```
-
-When `vofy tasks` runs in a TTY, it opens an interactive browser by default. Use `--plain` for agent-friendly output.
-
-`vofy billing` opens an interactive picker in a TTY and also supports direct plan selection via `vofy billing starter|pro|max` or `vofy billing --plan <plan>`.
 
 ## Related Skills
 

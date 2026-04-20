@@ -1,23 +1,7 @@
 {
   "name": "imagine-skill",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "description": "AI agent skills for vofy-cli media generation",
-  "bin": {
-    "imagine-skill": "bin/skill.js",
-    "skill": "bin/skill.js"
-  },
-  "scripts": {
-    "test": "node --test tests/*.test.js"
-  },
-  "keywords": [
-    "skills",
-    "agent-skills",
-    "vofy",
-    "codex",
-    "claude-code",
-    "cursor",
-    "opencode"
-  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,7 +9,6 @@
   },
   "homepage": "https://github.com/WhiteTowerAI/imagine-skill",
   "files": [
-    "bin/",
     "skills/",
     "adapters/",
     "install.sh",
