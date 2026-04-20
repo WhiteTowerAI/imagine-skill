@@ -6,7 +6,52 @@ Give your AI coding agent (Claude Code, Codex, OpenCode, Cursor) the ability to 
 
 ## Quick Install
 
-### One-line install (auto-detects your AI tools)
+### Install vofy-cli
+
+```bash
+npm install -g vofy-cli@0.1.1
+```
+
+### Load this repo with `npx skills`
+
+```bash
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent codex -y
+```
+
+List the available skills first:
+
+```bash
+npx -y skills add WhiteTowerAI/imagine-skill --list
+```
+
+Examples for other agents:
+
+```bash
+# Claude Code
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent claude-code -y
+
+# Cursor
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent cursor -y
+
+# OpenCode
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent opencode -y
+```
+
+During local development, you can test the same flow against the current checkout:
+
+```bash
+npx -y skills add . --list
+```
+
+### Standalone installer (optional)
+
+If you want a repo-local installer instead of the shared `skills` ecosystem CLI:
+
+```bash
+npx -y imagine-skill
+```
+
+### One-line install (git + shell)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/WhiteTowerAI/imagine-skill/main/install.sh | bash
@@ -58,6 +103,14 @@ cp adapters/cursor/imagine.mdc .cursor/rules/
 
 OpenCode reads `.claude/skills/` natively. Use the Claude Code install method.
 
+## `skills` CLI Compatibility
+
+This repository is compatible with the public [`skills`](https://github.com/vercel-labs/skills) CLI.
+
+- Source listing works: `npx -y skills add WhiteTowerAI/imagine-skill --list`
+- Skill install works: `npx -y skills add WhiteTowerAI/imagine-skill --skill imagine --agent codex -y`
+- Local development works: `npx -y skills add . --list`
+
 ## What's Included
 
 | Skill | Purpose |
@@ -69,7 +122,7 @@ OpenCode reads `.claude/skills/` natively. Use the Claude Code install method.
 
 ## Prerequisites
 
-- [vofy-cli](https://github.com/WhiteTowerAI/Vofy) installed and on PATH
+- [vofy-cli](https://github.com/WhiteTowerAI/Vofy) installed with `npm install -g vofy-cli@0.1.1`
 - Authenticated session (`vofy login`)
 
 ## License

@@ -7,6 +7,8 @@ alwaysApply: true
 
 vofy-cli is a CLI for the Vofy media generation platform (21 models, image + video).
 
+Before using it, make sure the user has installed `vofy-cli` with `npm install -g vofy-cli@0.1.1` and authenticated with `vofy login`.
+
 ## Rules for AI Agents
 
 - Always use `--yes` on create commands (skips interactive route picker)

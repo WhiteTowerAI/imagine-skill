@@ -7,6 +7,8 @@ description: Step-by-step workflow for creating images and videos with vofy-cli,
 
 This skill guides you through the complete media creation workflow — from understanding the user's need to delivering a downloaded result.
 
+If `vofy` is missing, stop and tell the user to install it with `npm install -g vofy-cli@0.1.1` before continuing.
+
 ## Workflow
 
 1. Determine what the user wants (image or video? what content?)

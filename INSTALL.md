@@ -4,8 +4,42 @@ These instructions are for AI agents. Follow them step by step.
 
 ## Prerequisites
 
-- `vofy` CLI must be installed and on PATH
+- Install `vofy-cli` first: `npm install -g vofy-cli@0.1.1`
 - User must have run `vofy login` to authenticate
+
+## Fast path: install with `npx skills`
+
+```bash
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent codex -y
+```
+
+List the skills before installing:
+
+```bash
+npx -y skills add WhiteTowerAI/imagine-skill --list
+```
+
+Examples for other agents:
+
+```bash
+# Claude Code
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent claude-code -y
+
+# Cursor
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent cursor -y
+```
+
+For local development, the same CLI can load the current checkout directly:
+
+```bash
+npx -y skills add . --list
+```
+
+## Alternative fast path: standalone installer
+
+```bash
+npx -y imagine-skill
+```
 
 ## Step 1: Detect your AI tool
 
@@ -62,7 +96,7 @@ cp /tmp/imagine-skill/adapters/cursor/imagine.mdc .cursor/rules/
 
 ## Step 4: Verify
 
-Run `vofy --version` to confirm vofy-cli is available, then run `vofy status` to confirm authentication.
+Run `vofy --version` to confirm `npm install -g vofy-cli@0.1.1` succeeded, then run `vofy status` to confirm authentication.
 
 ## Step 5: Clean up
 

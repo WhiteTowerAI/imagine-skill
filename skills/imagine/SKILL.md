@@ -9,7 +9,7 @@ vofy-cli is a command-line tool for the Vofy media generation platform. It suppo
 
 ## Prerequisites
 
-1. vofy-cli must be installed and on PATH
+1. Install vofy-cli with `npm install -g vofy-cli@0.1.1`
 2. User must be authenticated: `vofy login`
 3. Verify with: `vofy status`
 

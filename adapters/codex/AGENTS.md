@@ -8,7 +8,7 @@ A command-line tool for the Vofy media generation platform. It supports 21 model
 
 ## Prerequisites
 
-- vofy-cli installed and on PATH
+- Install vofy-cli with `npm install -g vofy-cli@0.1.1`
 - User authenticated via `vofy login` (never run this yourself — it needs a browser)
 - Verify with `vofy status`
 
