@@ -1,32 +1,66 @@
-# imagine-skill
+<h1 align="center">
+  Imagine-skill: Image & Video Generation Skill for Agents
+</h1>
 
-AI agent skills for [vofy-cli](https://github.com/WhiteTowerAI/Vofy) — a CLI for the Vofy media generation platform.
+<p align="center">
+  <strong> A Vofy-powered skill for agents like Codex and Claude Code to use image and video generation models reliably. </strong>
+</p>
 
-Give your AI coding agent (Claude Code, Codex, OpenCode, Cursor) the ability to generate images and videos using 21+ models through vofy-cli.
+<p align="center">
+  <a href="https://discord.gg/AuggThwmXm"><img src="https://img.shields.io/badge/Discord-Join%20chat-5865F2?logo=discord&logoColor=white" alt="Discord"></a>
+  <a href="https://www.npmjs.com/package/vofy-cli"><img src="https://img.shields.io/npm/v/vofy-cli?logo=npm&logoColor=white&color=CB3837" alt="npm version"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/Codex-supported-10A37F" alt="Codex supported">
+  <img src="https://img.shields.io/badge/Claude%20Code-supported-D97757" alt="Claude Code supported">
+</p>
 
-## Quick Install
+<p align="center">
+  <a href="https://www.vofy.art/">Website</a> &bull;
+  <a href="#quick-start">Quick Start</a> &bull;
+  <a href="https://discord.gg/AuggThwmXm">Discord</a>
+</p>
 
-### Install vofy-cli
+This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...) a easy way to generate images and videos:
+```
+- Unified interface across models
+- Fast access to 20+ latest models
+- Agent-friendly CLI workflow
+- Official and lower-cost provider options
+```
+
+## See it in action
+
+```
+User    ❯ Use Grok Imagine to generate an image of Spider-Man climbing a skyscraper in Taipei, 
+           with an extremely realistic, cinematic look.
+
+Agent   ❯ Generated with vofy using grok-imagine-image at 9:16, 2K.
+           The result is saved at ./grok-imagine-spiderman-taipei/image_iohf7jePtbVywKJM-1.jpg
+```
+
+
+## Quick Start
+
+### 1. Install vofy-cli
 
 ```bash
 npm install -g vofy-cli@0.1.1
 ```
 
-### Load this repo with `npx skills`
+run `vofy login` to fully set up the vofy-cli.
+
+### 2. Install Imagine-skill with `npx skills`
 
 ```bash
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' -y
+```
+
+Install for specific agents:
+
+```bash
+# Codex
 npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent codex -y
-```
 
-List the available skills first:
-
-```bash
-npx -y skills add WhiteTowerAI/imagine-skill --list
-```
-
-Examples for other agents:
-
-```bash
 # Claude Code
 npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent claude-code -y
 
@@ -37,19 +71,13 @@ npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent cursor -y
 npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent opencode -y
 ```
 
-During local development, you can test the same flow against the current checkout:
+Now tell your AI: `/imagine create <what-you-want-to-generate>`
 
-```bash
-npx -y skills add . --list
-```
+You can also use `/imagine` for quick reference, `imagine-models` for model guides, and `imagine-tasks` to track the history runs.
 
-### Standalone installer (optional)
+> [!NOTE]
+> Also works with one-line shell install, manual install, and agent install. [See installation options](INSTALL.md).
 
-If you want a repo-local installer instead of the shared `skills` ecosystem CLI:
-
-```bash
-npx -y imagine-skill
-```
 
 ### One-line install (git + shell)
 
@@ -65,52 +93,6 @@ Add this to your AI tool's config (CLAUDE.md, AGENTS.md, etc.):
 Fetch and follow instructions from https://raw.githubusercontent.com/WhiteTowerAI/imagine-skill/main/INSTALL.md
 ```
 
-### Manual install
-
-See tool-specific instructions below.
-
-## Supported AI Tools
-
-### Claude Code
-
-```bash
-# Copy skills to your project
-cp -r skills/ .claude/skills/
-
-# Or to global config
-cp -r skills/ ~/.claude/skills/
-```
-
-### Codex
-
-```bash
-# Copy the pre-built AGENTS.md adapter
-cp adapters/codex/AGENTS.md ~/.codex/AGENTS.md
-
-# Or append to existing
-cat adapters/codex/AGENTS.md >> ~/.codex/AGENTS.md
-```
-
-### Cursor
-
-```bash
-# Copy the .mdc rule file
-mkdir -p .cursor/rules
-cp adapters/cursor/imagine.mdc .cursor/rules/
-```
-
-### OpenCode
-
-OpenCode reads `.claude/skills/` natively. Use the Claude Code install method.
-
-## `skills` CLI Compatibility
-
-This repository is compatible with the public [`skills`](https://github.com/vercel-labs/skills) CLI.
-
-- Source listing works: `npx -y skills add WhiteTowerAI/imagine-skill --list`
-- Skill install works: `npx -y skills add WhiteTowerAI/imagine-skill --skill imagine --agent codex -y`
-- Local development works: `npx -y skills add . --list`
-
 ## What's Included
 
 | Skill | Purpose |
@@ -120,10 +102,21 @@ This repository is compatible with the public [`skills`](https://github.com/verc
 | `imagine-models` | Model selection guide + detailed capability reference |
 | `imagine-tasks` | Task listing, detail view, result download |
 
-## Prerequisites
 
-- [vofy-cli](https://github.com/WhiteTowerAI/Vofy) installed with `npm install -g vofy-cli@0.1.1`
-- Authenticated session (`vofy login`)
+## Supported Models
+
+Imagine-skill supports a growing set of image and video models across major providers.
+
+Representative models:
+
+| Provider | Image Models | Video Models |
+| --- | --- | --- |
+| Google | `gemini-3.1-flash-image-preview`, `gemini-3-pro-image-preview` | `veo-3.1`, `veo-3.1-fast`, `veo-3.1-lite` |
+| OpenAI | `gpt-image-1.5` | `sora-2`, `sora-2-pro` |
+| xAI | `grok-imagine-image`, `grok-imagine-image-pro` | `grok-imagine-video` |
+| ByteDance | `seedream-4.5`, `seedream-5.0-lite` | `seedance-1.5-pro`, `seedance-2.0`, `seedance-2.0-fast` |
+| Kling | - | `kling-2.6`, `kling-3.0`, `kling-motion-control`, `kling-3.0-motion-control` |
+
 
 ## License
 
