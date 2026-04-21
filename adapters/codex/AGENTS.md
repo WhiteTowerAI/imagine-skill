@@ -8,14 +8,14 @@ A command-line tool for the Vofy media generation platform. It supports 21 model
 
 ## Prerequisites
 
-- Install vofy-cli with `npm install -g vofy-cli@0.1.1`
+- Install vofy-cli with `npm install -g vofy-cli@0.1.3`
 - User authenticated via `vofy login` (never run this yourself — it needs a browser)
 - Verify with `vofy status`
 
 ## Critical Rules
 
 1. Always use `--yes` on create commands — skips interactive route picker
-2. Always use `--plain` on `vofy tasks` — avoids interactive browser
+2. Always use `--plain` on `vofy tasks` — avoids the interactive task browser in TTY sessions
 3. Use `--download-to <path>` when you need local files; otherwise the default sync output already shows result URLs
 4. Never run `vofy login` — tell the user to do it manually if auth fails
 
@@ -26,10 +26,11 @@ A command-line tool for the Vofy media generation platform. It supports 21 model
 | `vofy status` | Check auth and credits |
 | `vofy image create` | Create image |
 | `vofy video create` | Create video |
-| `vofy task <id>` | Task detail / download |
+| `vofy task <id_or_prefix>` | Task detail / URLs / download |
 | `vofy tasks --plain` | List tasks |
 | `vofy models` | List models |
 | `vofy models <name>` | Model capabilities |
+| `vofy billing` | Open pricing or switch plans |
 
 ## Image Creation
 
@@ -74,6 +75,15 @@ Top video models:
 - `veo-3.1` — highest quality, up to 4K, 4-8s
 - `kling-3.0` — long videos up to 15s, audio, multi-shot
 - `seedance-2.0` — most versatile, 7 modes, audio, web search
+
+Task tips:
+- `vofy tasks` opens an interactive browser in a TTY unless you pass `--plain`
+- `vofy task` accepts a unique task id prefix
+- `vofy task <id_or_prefix> --result-url` prints generated resource URLs
+
+Billing tips:
+- `vofy billing` opens an interactive picker in a TTY
+- `vofy billing starter|pro|max` or `vofy billing --plan <plan>` skips the picker
 
 ## Error Handling
 

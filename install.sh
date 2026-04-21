@@ -81,7 +81,7 @@ echo ""
 
 if ! command -v vofy &>/dev/null; then
   echo "[!] vofy-cli is not installed yet"
-  echo "    Run: npm install -g vofy-cli@0.1.1"
+  echo "    Run: npm install -g vofy-cli@0.1.3"
   echo ""
 fi
 
@@ -136,4 +136,4 @@ fi
 
 echo "Installed for: ${installed[*]}"
 echo "Done. Your AI agent can now use vofy-cli."
-echo "If vofy is missing, install it with: npm install -g vofy-cli@0.1.1"
+echo "If vofy is missing, install it with: npm install -g vofy-cli@0.1.3"

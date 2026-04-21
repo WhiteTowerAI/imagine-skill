@@ -47,7 +47,7 @@ Agent   ❯ Generated with vofy using grok-imagine-image at 9:16, 2K.
 ### 1. Install vofy-cli
 
 ```bash
-npm install -g vofy-cli@0.1.1
+npm install -g vofy-cli@0.1.3
 ```
 
 run `vofy login` to fully set up the vofy-cli.
@@ -107,6 +107,13 @@ Representative models:
 | xAI | `grok-imagine-image`, `grok-imagine-image-pro` | `grok-imagine-video` |
 | ByteDance | `seedream-4.5`, `seedream-5.0-lite` | `seedance-1.5-pro`, `seedance-2.0`, `seedance-2.0-fast` |
 | Kling | - | `kling-2.6`, `kling-3.0`, `kling-motion-control`, `kling-3.0-motion-control` |
+
+---
+
+## Prerequisites
+
+- [vofy-cli](https://github.com/WhiteTowerAI/Vofy) installed with `npm install -g vofy-cli@0.1.3`
+- Authenticated session (`vofy login`)
 
 ---
 

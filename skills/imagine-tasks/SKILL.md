@@ -13,18 +13,22 @@ Every `vofy image create` or `vofy video create` command produces a task. This s
 vofy tasks --plain                    # all recent tasks (non-interactive)
 vofy tasks --plain --type image       # image tasks only
 vofy tasks --plain --type video       # video tasks only
+vofy tasks --interactive              # force the interactive browser in a TTY
 ```
 
 > **Note:** The CLI does not support server-side status filtering. To find tasks by status, run `vofy tasks --plain` and filter the output yourself.
 
-Always use `--plain` as an AI agent — the default opens an interactive browser that blocks automation.
+Always use `--plain` as an AI agent — in a TTY, the default opens an interactive browser that blocks automation.
 
 ## Checking a Specific Task
 
 ```bash
-vofy task <task_id>                          # show task detail
-vofy task <task_id> --download-to ./output   # download results
+vofy task <task_id_or_prefix>                # show task detail
+vofy task <task_id_or_prefix> --result-url   # print generated resource URLs
+vofy task <task_id_or_prefix> --download-to ./output
 ```
+
+`vofy task` accepts either a full task id or a unique task id prefix.
 
 ## Task Lifecycle
 

@@ -4,7 +4,7 @@ These instructions are for AI agents. Follow them step by step.
 
 ## Prerequisites
 
-- Install `vofy-cli` first: `npm install -g vofy-cli@0.1.1`
+- Install `vofy-cli` first: `npm install -g vofy-cli@0.1.3`
 - User must have run `vofy login` to authenticate
 
 ## Fast path: install with `npx skills`
@@ -96,7 +96,7 @@ cp /tmp/imagine-skill/adapters/cursor/imagine.mdc .cursor/rules/
 
 ## Step 4: Verify
 
-Run `vofy --version` to confirm `npm install -g vofy-cli@0.1.1` succeeded, then run `vofy status` to confirm authentication.
+Run `vofy --version` to confirm `npm install -g vofy-cli@0.1.3` succeeded, then run `vofy status` to confirm authentication.
 
 ## Step 5: Clean up
 

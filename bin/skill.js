@@ -42,7 +42,7 @@ console.log("");
 if (vofyCheck.error || vofyCheck.status !== 0) {
   console.log("vofy-cli was not found on PATH.");
   console.log("Install it first with:");
-  console.log("  npm install -g vofy-cli@0.1.1");
+  console.log("  npm install -g vofy-cli@0.1.3");
   console.log("");
 }
 
@@ -62,6 +62,6 @@ if (typeof result.status === "number" && result.status !== 0) {
 
 console.log("");
 console.log("Next steps:");
-console.log("  1. Ensure vofy-cli is installed: npm install -g vofy-cli@0.1.1");
+console.log("  1. Ensure vofy-cli is installed: npm install -g vofy-cli@0.1.3");
 console.log("  2. Authenticate once in a browser: vofy login");
 console.log("  3. Verify access: vofy status");
