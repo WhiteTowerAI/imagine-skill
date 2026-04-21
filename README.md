@@ -35,15 +35,11 @@ This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...)
 ## See it in action
 
 <p align="center">
-  <video
-    src="./assets/skill-demo.mp4"
+  <img
+    src="./assets/skill-demo-gif.gif"
+    alt="Imagine skill demo"
     width="720"
-    controls
-    muted
-    playsinline
-  >
-    Your browser does not support the video tag.
-  </video>
+  />
 </p>
 
 ```text
