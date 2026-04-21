@@ -34,40 +34,27 @@ This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...)
 
 ## See it in action
 
-### Image demo
+<p align="center">
+  <video
+    src="./assets/skill-demo.mp4"
+    width="720"
+    controls
+    muted
+    playsinline
+  >
+    Your browser does not support the video tag.
+  </video>
+</p>
 
-<table>
-  <tr>
-    <td width="60%" align="center" valign="top">
-      <img
-        src="./assets/image_8WfdbsWYGAAlcOHT-1.jpg"
-        alt="Spider-Man climbing a skyscraper in Taipei"
-        width="100%"
-      />
-      <p><sub>Generated with vofy using grok-imagine-image at 9:16, 2K.</sub></p>
-    </td>
-    <td width="40%" align="left" valign="top">
-      <p><strong>User</strong> ❯ Use Grok Imagine to generate an image of Spider-Man climbing a skyscraper in Taipei, with an extremely realistic, cinematic look.</p>
-      <p><strong>Agent</strong> ❯ Generated with vofy using grok-imagine-image at 9:16, 2K.<br>
-      The result is saved at <code>./grok-imagine-spiderman-taipei/image_iohf7jePtbVywKJM-1.jpg</code></p>
-    </td>
-  </tr>
-</table>
+```text
+User    ❯ Create a cinematic 6-second video of a paper airplane 
+           flying through neon-lit streets in Tokyo at night, 
+           use seedance 2.0
 
-### Video demo
-
-<table>
-  <tr>
-    <td width="60%" align="center" valign="middle">
-      <p><sub>Add a video preview, GIF, or poster image here when one is ready.</sub></p>
-    </td>
-    <td width="40%" align="left" valign="top">
-      <p><strong>User</strong> ❯ Create a cinematic 6-second video of a paper airplane flying through neon-lit streets in Tokyo at night.</p>
-      <p><strong>Agent</strong> ❯ Generated with vofy using veo-3.1 at 16:9, 6s.<br>
-      The result is saved at <code>./paper-airplane-tokyo/video_4hK92LmNqP1s.mp4</code></p>
-    </td>
-  </tr>
-</table>
+Agent   ❯ Generated with seedance-2.0 
+           as a 6-second 16:9 720p text-to-video render.
+           Local file: video_hMQpifnYS9yMTXzJ.mp4.
+```
 
 ---
 
