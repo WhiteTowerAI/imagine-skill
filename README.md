@@ -1,9 +1,9 @@
 <h1 align="center">
-  Imagine-skill: Image & Video Generation Skill for Agents
+  Imagine-skill
 </h1>
 
 <p align="center">
-  <strong> A Vofy-powered skill for agents like Codex and Claude Code to use image and video generation models reliably. </strong>
+  <strong> A Vofy-powered skill for agents to use image and video generation models reliably. </strong>
 </p>
 
 <p align="center">
@@ -28,6 +28,8 @@ This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...)
 - Official and lower-cost provider options
 ```
 
+---
+
 ## See it in action
 
 ```
@@ -38,6 +40,7 @@ Agent   ❯ Generated with vofy using grok-imagine-image at 9:16, 2K.
            The result is saved at ./grok-imagine-spiderman-taipei/image_iohf7jePtbVywKJM-1.jpg
 ```
 
+---
 
 ## Quick Start
 
@@ -78,20 +81,7 @@ You can also use `/imagine` for quick reference, `imagine-models` for model guid
 > [!NOTE]
 > Also works with one-line shell install, manual install, and agent install. [See installation options](INSTALL.md).
 
-
-### One-line install (git + shell)
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/WhiteTowerAI/imagine-skill/main/install.sh | bash
-```
-
-### AI agent install
-
-Add this to your AI tool's config (CLAUDE.md, AGENTS.md, etc.):
-
-```
-Fetch and follow instructions from https://raw.githubusercontent.com/WhiteTowerAI/imagine-skill/main/INSTALL.md
-```
+---
 
 ## What's Included
 
@@ -102,6 +92,7 @@ Fetch and follow instructions from https://raw.githubusercontent.com/WhiteTowerA
 | `imagine-models` | Model selection guide + detailed capability reference |
 | `imagine-tasks` | Task listing, detail view, result download |
 
+---
 
 ## Supported Models
 
@@ -117,6 +108,7 @@ Representative models:
 | ByteDance | `seedream-4.5`, `seedream-5.0-lite` | `seedance-1.5-pro`, `seedance-2.0`, `seedance-2.0-fast` |
 | Kling | - | `kling-2.6`, `kling-3.0`, `kling-motion-control`, `kling-3.0-motion-control` |
 
+---
 
 ## License
 
