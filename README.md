@@ -20,13 +20,13 @@
   <a href="https://discord.gg/AuggThwmXm">Discord</a>
 </p>
 
-This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...) a easy way to generate images and videos:
-```
-- Unified interface across models
-- Fast access to 20+ latest models
-- Agent-friendly CLI workflow
-- Official and lower-cost provider options
-```
+
+## Why imagine-skill
+
+- Works across agent environments including Codex, Claude Code, Cursor, OpenCode, and similar tools.
+- Builds on `vofy-cli`, so agents can access modern image and video models through one consistent workflow.
+- Reduces common agent mistakes with clear rules for authentication, non-interactive commands, downloads, and task handling.
+- Helps agents go from natural-language requests to real generated outputs with less setup and less guesswork.
 
 ---
 
