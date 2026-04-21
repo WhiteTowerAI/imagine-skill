@@ -7,11 +7,11 @@
 </p>
 
 <p align="center">
-  <a href="https://discord.gg/AuggThwmXm"><img src="https://img.shields.io/badge/Discord-Join%20chat-5865F2?logo=discord&logoColor=white" alt="Discord"></a>
   <a href="https://www.npmjs.com/package/vofy-cli"><img src="https://img.shields.io/npm/v/vofy-cli?logo=npm&logoColor=white&color=CB3837" alt="npm version"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/Codex-supported-10A37F" alt="Codex supported">
   <img src="https://img.shields.io/badge/Claude%20Code-supported-D97757" alt="Claude Code supported">
+  <a href="https://discord.gg/AuggThwmXm"><img src="https://img.shields.io/badge/Discord-Join%20chat-5865F2?logo=discord&logoColor=white" alt="Discord"></a>
 </p>
 
 <p align="center">
@@ -32,8 +32,17 @@ This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...)
 
 ## See it in action
 
+<p align="center">
+  <img
+    src="./assets/image_8WfdbsWYGAAlcOHT-1.jpg"
+    alt="Spider-Man climbing a skyscraper in Taipei"
+    width="720"
+  />
+</p>
+
 ```
-User    ❯ Use Grok Imagine to generate an image of Spider-Man climbing a skyscraper in Taipei, 
+User    ❯ Use Grok Imagine to generate an image of Spider-Man 
+           climbing a skyscraper in Taipei, 
            with an extremely realistic, cinematic look.
 
 Agent   ❯ Generated with vofy using grok-imagine-image at 9:16, 2K.
@@ -74,12 +83,14 @@ npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent cursor -y
 npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent opencode -y
 ```
 
+### 3. Just use it
+
 Now tell your AI: `/imagine create <what-you-want-to-generate>`
 
 You can also use `/imagine` for quick reference, `imagine-models` for model guides, and `imagine-tasks` to track the history runs.
 
 > [!NOTE]
-> Also works with one-line shell install, manual install, and agent install. [See installation options](INSTALL.md).
+> Also works with one-line shell install, manual install, and agent install. [See more installation options](INSTALL.md).
 
 ---
 
