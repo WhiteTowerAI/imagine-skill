@@ -36,7 +36,7 @@ This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...)
 
 <p align="center">
   <video
-    src="https://github.com/user-attachments/assets/e8b09543-8e3c-4a9c-8644-720b3042c89c"
+    src="https://github.com/user-attachments/assets/363bb325-29bb-449f-8e62-ac41d7572a73"
     width="720"
     controls
     muted
