@@ -21,10 +21,12 @@
 </p>
 
 
+This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...) a easy way to generate images and videos.
+
 ## Why imagine-skill
 
 - Works across agent environments including Codex, Claude Code, Cursor, OpenCode, and similar tools.
-- Builds on `vofy-cli`, so agents can access modern image and video models through one consistent workflow.
+- Builds on `vofy-cli`, so agents can access 20+ modern image and video models through one consistent workflow.
 - Reduces common agent mistakes with clear rules for authentication, non-interactive commands, downloads, and task handling.
 - Helps agents go from natural-language requests to real generated outputs with less setup and less guesswork.
 
@@ -57,9 +59,10 @@ Agent   ❯ Generated with vofy using grok-imagine-image at 9:16, 2K.
 
 ```bash
 npm install -g vofy-cli@0.1.3
+vofy login
 ```
 
-run `vofy login` to fully set up the vofy-cli.
+remember to run `vofy login` to fully set up the vofy-cli.
 
 ### 2. Install Imagine-skill with `npx skills`
 
@@ -132,6 +135,10 @@ Representative models:
 | xAI | `grok-imagine-image`, `grok-imagine-image-pro` | `grok-imagine-video` |
 | ByteDance | `seedream-4.5`, `seedream-5.0-lite` | `seedance-1.5-pro`, `seedance-2.0`, `seedance-2.0-fast` |
 | Kling | - | `kling-2.6`, `kling-3.0`, `kling-motion-control`, `kling-3.0-motion-control` |
+
+> [!NOTE]
+> All models available on [Vofy](https://www.vofy.art/) can be accessed through imagine-skill, and pricing is currently the same as on the Vofy website.
+
 
 ---
 
