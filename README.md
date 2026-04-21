@@ -94,6 +94,20 @@ You can also use `/imagine` for quick reference, `imagine-models` for model guid
 
 ---
 
+## How it works
+
+`vofy-cli` is the execution layer. It talks to Vofy models, submits generation jobs, and returns files or result URLs.
+
+`imagine-skill` is the agent layer. It teaches your AI agent when to use `vofy image create`, `vofy video create`, `vofy tasks --plain`, and other commands safely and consistently.
+
+In practice, you install both:
+
+1. Install `vofy-cli` so media generation commands are available.
+2. Install `imagine-skill` for your AI tool so the agent knows the correct workflow.
+3. Ask your agent for an image or video in natural language, and the skill guides the CLI usage behind the scenes.
+
+---
+
 ## What's Included
 
 | Skill | Purpose |
@@ -118,13 +132,6 @@ Representative models:
 | xAI | `grok-imagine-image`, `grok-imagine-image-pro` | `grok-imagine-video` |
 | ByteDance | `seedream-4.5`, `seedream-5.0-lite` | `seedance-1.5-pro`, `seedance-2.0`, `seedance-2.0-fast` |
 | Kling | - | `kling-2.6`, `kling-3.0`, `kling-motion-control`, `kling-3.0-motion-control` |
-
----
-
-## Prerequisites
-
-- [vofy-cli](https://github.com/WhiteTowerAI/Vofy) installed with `npm install -g vofy-cli@0.1.3`
-- Authenticated session (`vofy login`)
 
 ---
 
