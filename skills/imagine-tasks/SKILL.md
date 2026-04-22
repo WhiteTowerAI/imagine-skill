@@ -5,7 +5,7 @@ description: Task management for vofy-cli — listing, filtering, checking statu
 
 # Task Management with vofy-cli
 
-Every `vofy image create` or `vofy video create` command produces a task. This skill covers how to list, inspect, and download task results.
+Every `vofy image create` or `vofy video create` command in the [Vofy](https://www.vofy.art/) CLI produces a task. This skill covers how to list, inspect, and download task results.
 
 ## Listing Tasks
 

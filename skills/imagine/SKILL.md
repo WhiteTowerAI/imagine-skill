@@ -5,7 +5,7 @@ description: vofy-cli overview and command quick-reference for AI agents to gene
 
 # vofy-cli — AI Media Generation CLI
 
-vofy-cli is a command-line tool for the Vofy media generation platform. It supports 21 models across image generation (text-to-image, image-to-image, inpainting) and video generation (text-to-video, image-to-video, interpolation, motion control, and more).
+vofy-cli is a command-line tool for [Vofy](https://www.vofy.art/), the media generation platform. It supports 21 models across image generation (text-to-image, image-to-image, inpainting) and video generation (text-to-video, image-to-video, interpolation, motion control, and more).
 
 ## Prerequisites
 
