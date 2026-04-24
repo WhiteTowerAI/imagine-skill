@@ -62,7 +62,7 @@ Agent   ❯ Generated with seedance-2.0
 ### 1. Install vofy-cli
 
 ```bash
-npm install -g vofy-cli@0.1.5
+npm install -g vofy-cli@0.1.7
 vofy login
 ```
 

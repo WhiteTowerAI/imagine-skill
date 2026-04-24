@@ -7,7 +7,7 @@ Imagine Skill follows the standard Agent Skills ecosystem layout. The repository
 Install and authenticate `vofy-cli` first:
 
 ```bash
-npm install -g vofy-cli@0.1.5
+npm install -g vofy-cli@0.1.7
 vofy login
 vofy status
 ```

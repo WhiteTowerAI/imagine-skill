@@ -27,7 +27,7 @@ Use `vofy-cli` to create and manage AI-generated images and videos on Vofy.
 If `vofy` is missing, tell the user to run:
 
 ```bash
-npm install -g vofy-cli@0.1.5
+npm install -g vofy-cli@0.1.7
 vofy login
 ```
 

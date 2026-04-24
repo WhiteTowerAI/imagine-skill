@@ -17,7 +17,7 @@ Deliver generated media with a deterministic, non-interactive workflow.
 6. Build one non-interactive command with `--yes` and, when local output is useful, `--download-to ./output`.
 7. Return file paths or resource URLs; for async jobs, return the task id and next check command.
 
-If `vofy` is missing, stop and ask the user to install `vofy-cli@0.1.5` and authenticate once.
+If `vofy` is missing, stop and ask the user to install `vofy-cli@0.1.7` and authenticate once.
 
 ## Default Model Shortcuts
 
