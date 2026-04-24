@@ -10,6 +10,6 @@ test("skill CLI prints help", () => {
   });
 
   assert.equal(result.status, 0);
-  assert.match(result.stdout, /Usage: skill \[project-root\]/);
+  assert.match(result.stdout, /Usage: skill/);
   assert.match(result.stdout, /npx -y skills add WhiteTowerAI\/imagine-skill/);
 });

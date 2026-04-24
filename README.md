@@ -1,6 +1,4 @@
-<h1 align="center">
-  Imagine-skill
-</h1>
+<h1 align="center">Imagine Skill</h1>
 
 <p align="center">
   <strong> A Vofy-powered skill for agents to use image and video generation models reliably. </strong>
@@ -16,7 +14,8 @@
 
 <p align="center">
   <a href="https://www.vofy.art/">Website</a> &bull;
-  <a href="#quick-start">Quick Start</a> &bull;
+  <a href="#quick-start">Install</a> &bull;
+  <a href="#whats-included">Skills</a> &bull;
   <a href="https://discord.gg/AuggThwmXm">Discord</a>
 </p>
 
@@ -26,7 +25,7 @@ This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...)
 ## Why imagine-skill
 
 - Works across agent environments including Codex, Claude Code, Cursor, OpenCode, and similar tools.
-- Builds on `vofy-cli`, so agents can access 20+ modern image and video models through one consistent workflow.
+- Builds on `vofy-cli`, so agents can access 22 modern image and video models through one consistent workflow.
 - Reduces common agent mistakes with clear rules for authentication, non-interactive commands, downloads, and task handling.
 - Helps agents go from natural-language requests to real generated outputs with less setup and less guesswork.
 
@@ -63,7 +62,7 @@ Agent   ❯ Generated with seedance-2.0
 ### 1. Install vofy-cli
 
 ```bash
-npm install -g vofy-cli@0.1.3
+npm install -g vofy-cli@0.1.5
 vofy login
 ```
 
@@ -95,7 +94,7 @@ npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent opencode -y
 
 Now tell your AI: `/imagine create <what-you-want-to-generate>`
 
-You can also use `/imagine` for quick reference, `imagine-models` for model guides, and `imagine-tasks` to track the history runs.
+You can also use `/imagine` for quick reference, `imagine-prompt` for prompt optimization, `imagine-models` for model guides, and `imagine-tasks` to track the history runs.
 
 > [!NOTE]
 > Also works with one-line shell install, manual install, and agent install. [See more installation options](INSTALL.md).
@@ -122,6 +121,7 @@ In practice, you install both:
 |-------|---------|
 | `imagine` | CLI overview, command quick-reference, getting started |
 | `imagine-create` | Media creation workflow — from prompt to downloaded result |
+| `imagine-prompt` | Prompt optimization for model-ready image and video generation |
 | `imagine-models` | Model selection guide + detailed capability reference |
 | `imagine-tasks` | Task listing, detail view, result download |
 
@@ -136,10 +136,10 @@ Representative models:
 | Provider | Image Models | Video Models |
 | --- | --- | --- |
 | Google | `gemini-3.1-flash-image-preview`, `gemini-3-pro-image-preview` | `veo-3.1`, `veo-3.1-fast`, `veo-3.1-lite` |
-| OpenAI | `gpt-image-1.5` | `sora-2`, `sora-2-pro` |
+| OpenAI | `gpt-image-2`, `gpt-image-1.5` | `sora-2`, `sora-2-pro` |
 | xAI | `grok-imagine-image`, `grok-imagine-image-pro` | `grok-imagine-video` |
 | ByteDance | `seedream-4.5`, `seedream-5.0-lite` | `seedance-1.5-pro`, `seedance-2.0`, `seedance-2.0-fast` |
-| Kling | - | `kling-2.6`, `kling-3.0`, `kling-motion-control`, `kling-3.0-motion-control` |
+| Kling | - | `kling-2.6`, `kling-3.0`, `kling-2.6-motion-control`, `kling-3.0-motion-control` |
 
 > [!NOTE]
 > All models available on [Vofy](https://www.vofy.art/) can be accessed through imagine-skill, and pricing is currently the same as on the Vofy website.

@@ -1,183 +1,84 @@
 ---
 name: imagine-create
-description: Step-by-step workflow for creating images and videos with vofy-cli, including mode selection and flag guidance
+description: Create, edit, animate, transform, or extend images and videos with vofy-cli. Use when the user asks for text-to-image, image editing, inpainting, text-to-video, image-to-video, interpolation, reference-based video, video-to-video, video extension, or local media output.
 ---
 
-# Creating Media with vofy-cli
+# Create Media With Vofy CLI
 
-This skill guides you through the complete media creation workflow — from understanding the user's need to delivering a downloaded result.
-
-If `vofy` is missing, stop and tell the user to install it with `npm install -g vofy-cli@0.1.3` before continuing.
+Deliver generated media with a deterministic, non-interactive workflow.
 
 ## Workflow
 
-1. Determine what the user wants (image or video? what content?)
-2. Pick the right mode (text_to_image, image_to_video, etc.)
-3. Pick and confirm the model (`vofy models <name>` first; use imagine-models skill if unsure)
-4. Build the command with correct flags
-5. Execute and deliver the result
+1. Run `vofy status`; if auth fails, tell the user to run `vofy login`.
+2. Identify output type, source assets, aspect ratio, duration, resolution, and whether local files are required.
+3. Load `imagine-prompt` when the user gives a rough idea, asks for prompt improvement, or model-specific wording matters.
+4. Choose the simplest matching mode from the tables below.
+5. Pick a default model unless the user named one; load `imagine-models` only for strict limits, price, or special flags.
+6. Build one non-interactive command with `--yes` and, when local output is useful, `--download-to ./output`.
+7. Return file paths or resource URLs; for async jobs, return the task id and next check command.
 
-## Image Creation
+If `vofy` is missing, stop and ask the user to install `vofy-cli@0.1.5` and authenticate once.
 
-### Mode Selection
+## Default Model Shortcuts
 
-| User wants... | Mode | Key flags |
-|---------------|------|-----------|
-| Generate from text description | `text_to_image` | `--prompt` |
-| Edit/transform an existing image | `image_to_image` | `--prompt --image <path>` |
-| Edit a specific region of an image | `inpainting` | `--prompt --image <path> --mask <path>` |
+| Need | Default |
+| --- | --- |
+| General image | `seedream-4.5` |
+| Image editing or transparent assets | `gpt-image-1.5` |
+| Premium text-to-video | `veo-3.1` |
+| Fast video draft | `veo-3.1-fast` |
+| Animate an image | `kling-3.0` |
+| Transform or extend video | `seedance-2.0` |
 
-### Template
+Check `vofy models <model>` before adding optional flags such as `--audio`, `--background`, `--web-search`, `--multi-shot`, or motion-control settings.
 
-```bash
-vofy image create \
-  --model <model> \
-  --prompt "<prompt>" \
-  --aspect-ratio <ratio> \
-  --resolution <resolution> \
-  --quality <value> \
-  --yes \
-  --download-to ./output
-```
+## Image Modes
 
-> `--quality` is model-specific. Only include it when the model exposes a quality parameter (check `vofy models <name>`).
+| Intent | Mode | Required flags |
+| --- | --- | --- |
+| Text prompt | `text_to_image` | `--prompt` |
+| Transform image | `image_to_image` | `--prompt --image <path>` |
+| Edit masked area | `inpainting` | `--prompt --image <path> --mask <path>` |
 
-### Common Patterns
-
-**Text to image (simplest)**
-```bash
-vofy image create --model seedream-4.5 --prompt "a cat sitting on a windowsill" --yes --download-to ./output
-```
-
-**Image to image (edit/transform)**
-```bash
-vofy image create --model gpt-image-1.5 --prompt "make it look like a watercolor painting" --image ./photo.jpg --yes --download-to ./output
-```
-
-**Transparent background (logos, icons)**
-```bash
-vofy image create --model gpt-image-1.5 --prompt "a minimalist logo of a mountain" --background transparent --yes --download-to ./output
-```
-
-**High resolution**
-```bash
-vofy image create --model seedream-4.5 --prompt "landscape photo" --resolution 4K --aspect-ratio 16:9 --yes --download-to ./output
-```
-
-## Video Creation
-
-### Mode Selection
-
-| User wants... | Mode | Key flags |
-|---------------|------|-----------|
-| Generate video from text | `text_to_video` | `--prompt` |
-| Animate a still image | `image_to_video` | `--prompt --first-frame <path>` |
-| Generate video between two frames | `interpolation` | `--first-frame <path> --last-frame <path>` |
-| Use reference images for style | `reference_images` | `--prompt --reference-image <path>` |
-| Use mixed media references | `multimodal_reference` | `--mode multimodal_reference --reference-image <path> --reference-video <path>` |
-| Control motion trajectories | `motion_control` | Model-specific |
-| Transform existing video | `video_to_video` | `--mode video_to_video --prompt --video <path>` |
-| Extend existing video | `video_extension` | `--mode video_extension --prompt --video <path>` |
-
-### Template
+Base command:
 
 ```bash
-vofy video create \
-  --model <model> \
-  --prompt "<prompt>" \
-  --duration <seconds> \
-  --aspect-ratio <ratio> \
-  --yes \
-  --download-to ./output
+vofy image create --model <model> --prompt "<prompt>" --aspect-ratio <ratio> --resolution <resolution> --yes --download-to ./output
 ```
 
-### Common Patterns
+## Video Modes
 
-**Text to video (simplest)**
+| Intent | Mode | Required flags |
+| --- | --- | --- |
+| Text prompt | `text_to_video` | `--prompt` |
+| Animate image | `image_to_video` | `--prompt --first-frame <path>` |
+| Morph images | `interpolation` | `--first-frame <path> --last-frame <path>` |
+| Image references | `reference_images` | `--prompt --reference-image <path>` |
+| Mixed references | `multimodal_reference` | `--mode multimodal_reference --reference-image <path>` plus optional `--reference-video` / `--reference-audio` |
+| Transform video | `video_to_video` | `--mode video_to_video --prompt --video <path>` |
+| Extend video | `video_extension` | `--mode video_extension --prompt --video <path>` |
+| Control motion | `motion_control` | Model-specific trajectory flags |
+
+Base command:
+
 ```bash
-vofy video create --model veo-3.1 --prompt "a drone shot flying over a forest at sunrise" --duration 6 --yes --download-to ./output
+vofy video create --model <model> --prompt "<prompt>" --duration <seconds> --aspect-ratio <ratio> --yes --download-to ./output
 ```
 
-**Animate a still image**
-```bash
-vofy video create --model kling-3.0 --prompt "the character slowly turns their head" --first-frame ./character.png --yes --download-to ./output
-```
+## Result Handling
 
-**Interpolation (morph between two frames)**
-```bash
-vofy video create --model seedance-2.0 --prompt "smooth transition" --first-frame ./start.png --last-frame ./end.png --duration 4 --yes --download-to ./output
-```
+- Sync create commands wait for completion and print output by default.
+- `--download-to ./output` saves files locally and creates the directory if needed.
+- `--result-url` prints generated resource URLs explicitly after completion.
+- `--async` returns early; use `vofy tasks --plain --type video` and `vofy task <id_or_prefix> --download-to ./output` later.
+- If the command fails because a value is unsupported, run `vofy models <model>` and retry with one of the listed ratios, resolutions, durations, or modes.
 
-**Video with audio**
-```bash
-vofy video create --model kling-3.0 --prompt "a person speaking at a podium" --audio --duration 8 --yes --download-to ./output
-```
+## Common Validation Traps
 
-## Key Rules for AI Agents
+- `--video` is ambiguous; always add `--mode video_to_video` or `--mode video_extension`.
+- Mixed `--reference-image` with `--reference-video` or `--reference-audio` requires `--mode multimodal_reference`.
+- `kling-2.6` needs `resolution=1080p` for `--audio` and for last-frame interpolation.
+- `kling-3.0 --multi-shot` requires `--shot-type`; `customize` uses `--multi-prompt`, while `intelligence` uses `--prompt`.
+- Source-driven modes may ignore `--aspect-ratio` or `--resolution`; trust derived values from input media.
 
-1. **Always use `--yes`** — skips the interactive route picker. Without it, the CLI will prompt for user input which blocks the agent.
-
-2. **Use `--download-to <path>` when you need local files** — otherwise the default sync output already includes generated resource URLs.
-
-3. **Local files auto-upload** — pass local paths directly to `--image`, `--first-frame`, `--video`, etc. The CLI handles upload automatically.
-
-4. **Default is synchronous** — the command waits for the task to complete. Use `--async` if you want to submit and check later.
-
-5. **Check credits first** — run `vofy status` before creating media to verify the user has sufficient credits.
-
-6. **Never run `vofy login`** — it requires a browser. If auth fails, tell the user to run it manually.
-
-## Handling Results
-
-After a successful create command:
-- With `--download-to ./output`: files are saved to the specified directory
-- Without a download flag: the sync output includes generated resource URLs by default
-- With `--result-url`: URLs are printed explicitly after completion
-- For async tasks: use `vofy task <id_or_prefix> --download-to ./output` to download later
-
-## Validation Gotchas
-
-These are the most common causes of failed generations. The model docs have full validation rules, but these are the ones that trip up agents most often:
-
-**kling-2.6:**
-- 720p does NOT support `--audio` — must use 1080p for audio
-- `image_to_video` ignores `--aspect-ratio` (follows the input image)
-- `--last-frame` requires `resolution=1080p` and forbids `--audio`
-- `motion_control` forbids `--last-frame`, `--duration`, `--aspect-ratio`
-
-**kling-3.0:**
-- `image_to_video` ignores `--aspect-ratio` (follows the input image)
-- `--multi-shot` requires `--shot-type` (either `customize` or `intelligence`)
-- `--shot-type customize` requires `--multi-prompt` and forbids `--prompt`
-- `--shot-type intelligence` requires `--prompt` and forbids `--multi-prompt`
-
-**seedance-2.0 / seedance-2.0-fast:**
-- `multimodal_reference` uses `--reference-image` / `--reference-video` / `--reference-audio` — NOT `--first-frame` or `--video`
-- Mixed image+video/audio references require `--mode multimodal_reference`
-- `--reference-video` and `--reference-audio` are ONLY available in `multimodal_reference` mode
-
-**grok-imagine-video:**
-- `video_to_video` and `video_extension` ignore `--aspect-ratio` and `--resolution` (follows source video)
-
-**Ambiguous mode inference:**
-- `--video` by itself is ambiguous; use `--mode video_to_video` or `--mode video_extension`
-- Mixed `--reference-image` with `--reference-video` / `--reference-audio` needs `--mode multimodal_reference`
-
-**General:**
-- Some models have `hidden_controls` — parameters that exist but are auto-managed (e.g., `kling-3.0-motion-control` hides duration, aspect_ratio, audio)
-- Some parameters have `derived` values in certain modes (auto-set from input, e.g., aspect_ratio from source video)
-- Route pricing multipliers affect cost — route_b/route_c are often 0.5x but may restrict available modes/resolutions
-
-## Error Handling
-
-| Error | Action |
-|-------|--------|
-| "Not authenticated" | Tell user to run `vofy login` |
-| "Insufficient credits" | Tell user to check `vofy billing` |
-| "Model not found" | Run `vofy models` to list available models |
-| "Invalid parameter" | Check model capabilities with `vofy models <name>` |
-| Task fails/times out | Check `vofy task <id_or_prefix>` for error details |
-
-## Detailed Examples
-
-See [examples.md](examples.md) for more real-world scenarios.
+See `examples.md` for broader scenarios and `commands-reference.md` for full CLI help.

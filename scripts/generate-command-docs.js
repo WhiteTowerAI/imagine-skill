@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 
-const cliRoot = resolveCliRoot(process.argv[2]);
+const cliRoot = resolveCliRoot(firstPositionalArg());
 const cliEntry = path.join(cliRoot, "packages", "vofy-cli", "src", "index.js");
 const outputPath = path.join(__dirname, "..", "skills", "imagine", "commands-reference.md");
 
@@ -66,6 +66,10 @@ function resolveCliRoot(input) {
     process.exit(1);
   }
   return root;
+}
+
+function firstPositionalArg() {
+  return process.argv.slice(2).find((arg) => !arg.startsWith("--"));
 }
 
 function runHelp(cliEntryPath, cwd, args) {

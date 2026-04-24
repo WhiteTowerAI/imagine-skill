@@ -21,8 +21,14 @@ Per-mode constraints:
 
 Provider Routes:
 - route_a (1x)
+    - text_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, auto
+    - image_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, auto
 - route_b (1x)
+    - text_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, 2K, 4K, auto
+    - image_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, 2K, 4K, auto
 - route_c (1x)
+    - text_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, auto
+    - image_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, auto
 
 Route-specific restrictions:
 - route_a: when resolution=2K/4K — Route A only supports 1K and Auto resolutions
@@ -58,8 +64,14 @@ Pricing:
 
 Provider Routes:
 - route_a (1x)
+    - text_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, 2K, 4K, auto
+    - image_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, 2K, 4K, auto
 - route_b (0.75x)
+    - text_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, 2K, 4K, auto
+    - image_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, 2K, 4K, auto
 - route_c (0.75x)
+    - text_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, 2K, 4K, auto
+    - image_to_image: AR: 1:1, 2:3, 3:4, 4:5, 9:16, 3:2, 4:3, 5:4, 16:9, 21:9, auto, Res: 1K, 2K, 4K, auto
 
 <!-- NOTES:gemini-3-pro-image-preview -->
 <!-- Add hand-written tips and best practices here -->
@@ -101,9 +113,58 @@ Pricing:
 
 Provider Routes:
 - route_a (1x)
+    - text_to_image: AR: 1:1, 1:4, 1:8, 2:3, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 3:2, 16:9, 21:9, auto, Res: 512, 1K, 2K, 4K, auto
+    - image_to_image: AR: 1:1, 1:4, 1:8, 2:3, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 3:2, 16:9, 21:9, auto, Res: 512, 1K, 2K, 4K, auto
 - route_b (0.5x)
+    - text_to_image: AR: 1:1, 1:4, 1:8, 2:3, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 3:2, 16:9, 21:9, auto, Res: 512, 1K, 2K, 4K, auto
+    - image_to_image: AR: 1:1, 1:4, 1:8, 2:3, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 3:2, 16:9, 21:9, auto, Res: 512, 1K, 2K, 4K, auto
 
 <!-- NOTES:gemini-3.1-flash-image-preview -->
+<!-- Add hand-written tips and best practices here -->
+<!-- NOTES:END -->
+
+---
+
+## gpt-image-2
+
+| Property | Value |
+|----------|-------|
+| Modes | text_to_image, image_to_image, inpainting |
+| Aspect Ratios | 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto |
+| Resolutions | 1K, 2K, 3K, 4K, auto |
+| Max Output (text_to_image) | 10 |
+| Max Output (image_to_image) | 10 |
+| Max Input (image_to_image) | 16 |
+| Max Output (inpainting) | 10 |
+| Max Input (inpainting) | 16 |
+| Supports Auto | yes |
+| Base Price | 12 credits |
+
+Per-mode constraints:
+  - text_to_image: AR: 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto, Res: 1K, 2K, 3K, 4K, auto
+  - image_to_image: AR: 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto, Res: 1K, 2K, 3K, 4K, auto
+  - inpainting: AR: 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto, Res: 1K, 2K, 3K, 4K, auto
+
+Special Parameters:
+- `--quality <low|medium|high|auto>` — Choose whether the model prioritizes speed, balances quality automatically, or renders with higher image fidelity. Default: auto.
+- `--background <auto|opaque>` — Choose whether the image background stays opaque or is decided automatically by the model. Default: auto.
+
+Pricing:
+- Base: 12 credits
+- 12 pricing tiers (varies by resolution/duration/mode)
+- Range: 2–48 credits
+
+Provider Routes:
+- route_a (1x)
+    - text_to_image: AR: 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto, Res: 1K, 2K, 3K, 4K, auto
+    - image_to_image: AR: 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto, Res: 1K, 2K, 3K, 4K, auto
+    - inpainting: AR: 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto, Res: 1K, 2K, 3K, 4K, auto
+- route_c (0.75x)
+    - text_to_image: AR: 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto, Res: 1K, 2K, 3K, 4K, auto
+    - image_to_image: AR: 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto, Res: 1K, 2K, 3K, 4K, auto
+    - inpainting: AR: 1:1, 1:2, 2:3, 3:4, 4:5, 5:4, 4:3, 3:2, 2:1, 9:16, 9:19.5, 9:20, 16:9, 19.5:9, 20:9, 21:9, auto, Res: 1K, 2K, 3K, 4K, auto
+
+<!-- NOTES:gpt-image-2 -->
 <!-- Add hand-written tips and best practices here -->
 <!-- NOTES:END -->
 
@@ -116,10 +177,10 @@ Provider Routes:
 | Modes | text_to_image, image_to_image, inpainting |
 | Aspect Ratios | 1:1, 2:3, 3:2, auto |
 | Resolutions | 1K, auto |
-| Max Output (text_to_image) | 1 |
-| Max Output (image_to_image) | 1 |
+| Max Output (text_to_image) | 10 |
+| Max Output (image_to_image) | 10 |
 | Max Input (image_to_image) | 16 |
-| Max Output (inpainting) | 1 |
+| Max Output (inpainting) | 10 |
 | Max Input (inpainting) | 16 |
 | Supports Auto | yes |
 | Base Price | 8 credits |
@@ -130,42 +191,24 @@ Per-mode constraints:
   - inpainting: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
 
 Special Parameters:
+- `--quality <low|medium|high|auto>` — Choose whether the model prioritizes speed, balances quality automatically, or renders with higher image fidelity. Default: auto.
 - `--background <transparent|opaque|auto>` — Choose whether the image background stays transparent, becomes a solid backdrop, or is decided automatically by the model. Default: auto.
 
 Provider Routes:
+- route_a (1x)
+    - text_to_image: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
+    - image_to_image: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
+    - inpainting: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
 - route_b (0.5x)
+    - text_to_image: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
+    - image_to_image: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
+    - inpainting: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
 - route_c (0.5x)
+    - text_to_image: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
+    - image_to_image: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
+    - inpainting: AR: 1:1, 2:3, 3:2, auto, Res: 1K, auto
 
 <!-- NOTES:gpt-image-1.5 -->
-<!-- Add hand-written tips and best practices here -->
-<!-- NOTES:END -->
-
----
-
-## grok-imagine-image-pro
-
-| Property | Value |
-|----------|-------|
-| Modes | text_to_image, image_to_image |
-| Aspect Ratios | 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto |
-| Resolutions | 1K, 2K, auto |
-| Max Output (text_to_image) | 1 |
-| Max Output (image_to_image) | 1 |
-| Max Input (image_to_image) | 1 |
-| Supports Auto | yes |
-| Base Price | 8 credits |
-
-Per-mode constraints:
-  - text_to_image: AR: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto, Res: 1K, 2K, auto
-  - image_to_image: AR: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto, Res: 1K, 2K, auto
-
-Input Constraints:
-- image: formats: jpg/jpeg/png
-
-Provider Routes:
-- route_a (1x)
-
-<!-- NOTES:grok-imagine-image-pro -->
 <!-- Add hand-written tips and best practices here -->
 <!-- NOTES:END -->
 
@@ -193,8 +236,41 @@ Input Constraints:
 
 Provider Routes:
 - route_a (1x)
+    - text_to_image: AR: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto, Res: 1K, 2K, auto
+    - image_to_image: AR: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto, Res: 1K, 2K, auto
 
 <!-- NOTES:grok-imagine-image -->
+<!-- Add hand-written tips and best practices here -->
+<!-- NOTES:END -->
+
+---
+
+## grok-imagine-image-pro
+
+| Property | Value |
+|----------|-------|
+| Modes | text_to_image, image_to_image |
+| Aspect Ratios | 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto |
+| Resolutions | 1K, 2K, auto |
+| Max Output (text_to_image) | 1 |
+| Max Output (image_to_image) | 1 |
+| Max Input (image_to_image) | 1 |
+| Supports Auto | yes |
+| Base Price | 8 credits |
+
+Per-mode constraints:
+  - text_to_image: AR: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto, Res: 1K, 2K, auto
+  - image_to_image: AR: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto, Res: 1K, 2K, auto
+
+Input Constraints:
+- image: formats: jpg/jpeg/png
+
+Provider Routes:
+- route_a (1x)
+    - text_to_image: AR: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto, Res: 1K, 2K, auto
+    - image_to_image: AR: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 2:1, 1:2, 19.5:9, 9:19.5, 20:9, 9:20, auto, Res: 1K, 2K, auto
+
+<!-- NOTES:grok-imagine-image-pro -->
 <!-- Add hand-written tips and best practices here -->
 <!-- NOTES:END -->
 
@@ -226,7 +302,11 @@ Input Constraints:
 
 Provider Routes:
 - route_a (1x)
+    - text_to_image: AR: 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9, Res: 2K, 4K
+    - image_to_image: AR: 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9, Res: 2K, 4K
 - route_b (0.75x)
+    - text_to_image: AR: 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9, Res: 2K, 4K
+    - image_to_image: AR: 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9, Res: 2K, 4K
 
 <!-- NOTES:seedream-4.5 -->
 <!-- Add hand-written tips and best practices here -->
@@ -261,7 +341,11 @@ Input Constraints:
 
 Provider Routes:
 - route_a (1x)
+    - text_to_image: AR: 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9, Res: 2K, 3K
+    - image_to_image: AR: 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9, Res: 2K, 3K
 - route_b (0.75x)
+    - text_to_image: AR: 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9, Res: 2K, 3K
+    - image_to_image: AR: 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9, Res: 2K, 3K
 
 <!-- NOTES:seedream-5.0-lite -->
 <!-- Add hand-written tips and best practices here -->

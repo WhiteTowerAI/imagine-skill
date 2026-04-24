@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const repoRoot = path.join(__dirname, "..");
-const cliRoot = resolveCliRoot(process.argv[2]);
+const cliRoot = resolveCliRoot(firstPositionalArg());
 const manifest = JSON.parse(
   fs.readFileSync(path.join(cliRoot, "packages", "vofy-cli", "src", "model-manifest.json"), "utf8"),
 );
@@ -14,8 +14,6 @@ const docFiles = [
   "skills/imagine-create/SKILL.md",
   "skills/imagine-create/examples.md",
   "skills/imagine-tasks/SKILL.md",
-  "adapters/codex/AGENTS.md",
-  "adapters/cursor/imagine.mdc",
 ];
 
 const requiredSnippets = [
@@ -33,31 +31,6 @@ const requiredSnippets = [
     file: "skills/imagine-create/SKILL.md",
     pattern: /video_extension.*--mode video_extension/,
     message: "video_extension guidance must include `--mode video_extension`.",
-  },
-  {
-    file: "adapters/codex/AGENTS.md",
-    pattern: /video_to_video.*--mode video_to_video/,
-    message: "Codex adapter must describe video_to_video with an explicit mode.",
-  },
-  {
-    file: "adapters/codex/AGENTS.md",
-    pattern: /video_extension.*--mode video_extension/,
-    message: "Codex adapter must describe video_extension with an explicit mode.",
-  },
-  {
-    file: "adapters/cursor/imagine.mdc",
-    pattern: /multimodal_reference.*--mode multimodal_reference/,
-    message: "Cursor adapter must describe multimodal_reference with an explicit mode.",
-  },
-  {
-    file: "adapters/cursor/imagine.mdc",
-    pattern: /video_to_video.*--mode video_to_video/,
-    message: "Cursor adapter must describe video_to_video with an explicit mode.",
-  },
-  {
-    file: "adapters/cursor/imagine.mdc",
-    pattern: /video_extension.*--mode video_extension/,
-    message: "Cursor adapter must describe video_extension with an explicit mode.",
   },
 ];
 
@@ -87,8 +60,12 @@ const upstreamPkg = JSON.parse(
 const expectedVersion = upstreamPkg.version;
 
 const versionFiles = [
-  "README.md", "INSTALL.md", "install.sh", "bin/skill.js",
-  "skills/imagine/SKILL.md", "adapters/codex/AGENTS.md", "adapters/cursor/imagine.mdc",
+  "README.md",
+  "INSTALL.md",
+  "install.sh",
+  "bin/skill.js",
+  ...collectFiles("skills", (relPath) => relPath.endsWith(".md")),
+  ...collectFiles("docs", (relPath) => relPath.endsWith(".md")),
 ];
 const versionPattern = /vofy-cli@([\d]+\.[\d]+\.[\d]+[^\s"'`]*)/g;
 
@@ -110,8 +87,9 @@ const actualModelCount = Object.keys(manifest).filter(
   (name) => name !== "mock" && name !== "mock-image",
 ).length;
 const modelCountFiles = [
-  "README.md", "skills/imagine/SKILL.md",
-  "adapters/codex/AGENTS.md", "adapters/cursor/imagine.mdc",
+  "README.md",
+  ...collectFiles("skills", (relPath) => relPath.endsWith(".md")),
+  ...collectFiles("docs", (relPath) => relPath.endsWith(".md")),
 ];
 const countPattern = /(\d+)\s+models/g;
 
@@ -161,6 +139,29 @@ if (errors.length > 0) {
 
 console.log("Skill docs validated successfully.");
 
+function collectFiles(relativeDir, predicate) {
+  const absoluteDir = path.join(repoRoot, relativeDir);
+  if (!fs.existsSync(absoluteDir)) return [];
+
+  const results = [];
+  const stack = [absoluteDir];
+  while (stack.length > 0) {
+    const current = stack.pop();
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      const absolutePath = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        stack.push(absolutePath);
+        continue;
+      }
+      if (!entry.isFile()) continue;
+      const relPath = path.relative(repoRoot, absolutePath).split(path.sep).join("/");
+      if (!predicate || predicate(relPath)) results.push(relPath);
+    }
+  }
+
+  return results.sort();
+}
+
 function resolveCliRoot(input) {
   if (!input) {
     console.error("Usage: node scripts/validate-skill-docs.js <path-to-dev-feat-cli>");
@@ -174,6 +175,10 @@ function resolveCliRoot(input) {
     process.exit(1);
   }
   return root;
+}
+
+function firstPositionalArg() {
+  return process.argv.slice(2).find((arg) => !arg.startsWith("--"));
 }
 
 function extractCreateCommands(content) {

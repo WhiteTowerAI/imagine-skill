@@ -1,67 +1,60 @@
 ---
 name: imagine
-description: vofy-cli overview and command quick-reference for AI agents to generate images and videos
+description: Vofy CLI overview and quick reference for AI agents using image or video generation. Use when the user asks what Imagine/Vofy can do, needs setup guidance, wants command syntax, or needs a safe non-interactive workflow before creating media.
 ---
 
-# vofy-cli — AI Media Generation CLI
+# Vofy CLI Quick Reference
 
-vofy-cli is a command-line tool for the Vofy media generation platform. It supports 21 models across image generation (text-to-image, image-to-image, inpainting) and video generation (text-to-video, image-to-video, interpolation, motion control, and more).
+Use `vofy-cli` to create and manage AI-generated images and videos on Vofy.
 
-## Prerequisites
+## Fast Routing
 
-1. Install vofy-cli with `npm install -g vofy-cli@0.1.3`
-2. User must be authenticated: `vofy login`
-3. Verify with: `vofy status`
+- Need setup, syntax, or safe defaults: stay in this skill.
+- Need to improve, rewrite, translate, or adapt a media prompt: load `imagine-prompt`.
+- Need to generate, edit, animate, transform, extend, or download media: load `imagine-create`.
+- Need model fit, limits, pricing, durations, ratios, or special flags: load `imagine-models`.
+- Need prior jobs, status, URLs, or downloads: load `imagine-tasks`.
+- Need exact CLI help text only: open `commands-reference.md`.
 
-## AI Agent Rules
+## Non-Interactive Agent Rules
 
-When using vofy-cli as an AI agent, always:
+- Verify setup with `vofy status`; do not run `vofy login` because it opens a browser.
+- Add `--yes` to every `vofy image create` or `vofy video create` command.
+- Add `--plain` to `vofy tasks` in agent workflows.
+- Add `--download-to <dir>` when the user needs local files; otherwise return result URLs from sync output.
+- Check `vofy models <name>` before using model-specific flags.
 
-- Use `--yes` flag on create commands to skip interactive route picker
-- Use `--plain` flag on `vofy tasks` to avoid the interactive task browser in TTY sessions
-- Use `--download-to <path>` to save results to a known location
-- Never run `vofy login` — it requires a browser. If auth fails, tell the user to run it manually.
-
-## Command Quick Reference
-
-| Command | Purpose |
-|---------|---------|
-| `vofy status` | Show account summary, credits balance, plan |
-| `vofy image create` | Create an image generation task |
-| `vofy video create` | Create a video generation task |
-| `vofy task <id_or_prefix>` | Show task detail, resource URLs, or download results |
-| `vofy tasks --plain` | List recent tasks in plain text |
-| `vofy models` | List all available models |
-| `vofy models <name>` | Show detailed model capabilities |
-| `vofy billing` | Open pricing or switch plans |
-
-## Typical Workflow
+If `vofy` is missing, tell the user to run:
 
 ```bash
-# 1. Check auth and credits
-vofy status
-
-# 2. Find the right model
-vofy models --type image    # or --type video
-
-# 3. Create media
-vofy image create --model seedream-4.5 --prompt "a sunset over mountains" --yes --download-to ./output
-
-# 4. Check task status if needed
-vofy tasks --plain --type image
-vofy task <task_id> --download-to ./output
+npm install -g vofy-cli@0.1.5
+vofy login
 ```
 
-When `vofy tasks` runs in a TTY, it opens an interactive browser by default. Use `--plain` for agent-friendly output.
+## Commands
 
-`vofy billing` opens an interactive picker in a TTY and also supports direct plan selection via `vofy billing starter|pro|max` or `vofy billing --plan <plan>`.
+| Command | Purpose |
+| --- | --- |
+| `vofy status` | Check auth, plan, and credits |
+| `vofy models [name]` | List models or inspect one model |
+| `vofy image create` | Create image tasks |
+| `vofy video create` | Create video tasks |
+| `vofy tasks --plain` | List recent tasks without the TTY browser |
+| `vofy task <id_or_prefix>` | Inspect, download, or print URLs for one task |
+| `vofy billing [plan]` | View pricing or switch plans |
 
-## Related Skills
+## Minimal Create Pattern
 
-- **imagine-create**: Detailed media creation workflow with mode selection and flag guidance
-- **imagine-models**: Model selection guide and detailed capability reference
-- **imagine-tasks**: Task management — listing, detail view, downloading results
+```bash
+vofy status
+vofy image create --model seedream-4.5 --prompt "a cinematic mountain sunrise" --yes --download-to ./output
+```
 
-## Full Command Reference
+For video:
 
-See [commands-reference.md](commands-reference.md) for complete flag documentation for every command.
+```bash
+vofy status
+vofy video create --model veo-3.1 --prompt "a drone shot over a forest at sunrise" --duration 6 --yes --download-to ./output
+```
+
+Inspect models only when the request names a model-specific feature, strict limit, pricing concern, or a flag that may be unsupported.

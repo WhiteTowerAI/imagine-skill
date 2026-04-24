@@ -1,109 +1,71 @@
-# Installing imagine-skill
+# Installing Imagine Skill
 
-These instructions are for AI agents. Follow them step by step.
+Imagine Skill follows the standard Agent Skills ecosystem layout. The repository exposes installable `skills/<name>/SKILL.md` folders and relies on `npx skills add` to place them in the right agent-specific location.
 
 ## Prerequisites
 
-- Install `vofy-cli` first: `npm install -g vofy-cli@0.1.3`
-- User must have run `vofy login` to authenticate
-
-## Fast path: install with `npx skills`
+Install and authenticate `vofy-cli` first:
 
 ```bash
-npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent codex -y
+npm install -g vofy-cli@0.1.5
+vofy login
+vofy status
 ```
 
-List the skills before installing:
+Do not ask an agent to run `vofy login`; it opens a browser and must be completed by the user.
+
+## Install With `npx skills`
+
+Install all skills into the detected agent environment:
+
+```bash
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' -y
+```
+
+List skills without installing:
 
 ```bash
 npx -y skills add WhiteTowerAI/imagine-skill --list
 ```
 
-Examples for other agents:
+Add `--agent <name>` when targeting one tool:
 
 ```bash
-# Claude Code
-npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent claude-code -y
-
-# Cursor
-npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent cursor -y
+npx -y skills add WhiteTowerAI/imagine-skill --skill '*' --agent codex -y
 ```
 
-For local development, the same CLI can load the current checkout directly:
+Install from a local checkout while developing:
 
 ```bash
-npx -y skills add . --list
+npx -y skills add . --skill '*' -y
 ```
 
-## Alternative fast path: standalone installer
+Install one skill only:
+
+```bash
+npx -y skills add WhiteTowerAI/imagine-skill --skill imagine-create -y
+```
+
+## Compatibility Commands
+
+The npm package and shell script only print the standard install commands; they do not copy files themselves:
 
 ```bash
 npx -y imagine-skill
+curl -fsSL https://raw.githubusercontent.com/WhiteTowerAI/imagine-skill/main/install.sh | bash
 ```
 
-## Step 1: Detect your AI tool
-
-Check which AI tools are configured in the current environment:
+## Verify
 
 ```bash
-# Check for Claude Code
-ls -d .claude 2>/dev/null || ls -d ~/.claude 2>/dev/null
-
-# Check for Codex
-ls -d ~/.codex 2>/dev/null
-
-# Check for Cursor
-ls -d .cursor 2>/dev/null
-
-# Check for OpenCode
-ls -d .opencode 2>/dev/null
+vofy --version
+vofy status
 ```
 
-## Step 2: Clone the skill repository
+Then ask your agent:
 
-```bash
-git clone https://github.com/WhiteTowerAI/imagine-skill.git /tmp/imagine-skill
+```text
+Use imagine-create to generate a small test image and download it to ./output.
 ```
 
-## Step 3: Install skills for your tool
-
-### For Claude Code or OpenCode
-
-```bash
-mkdir -p .claude/skills
-cp -r /tmp/imagine-skill/skills/* .claude/skills/
-```
-
-### For Codex
-
-```bash
-mkdir -p ~/.codex
-# If AGENTS.md exists, append; otherwise copy
-if [ -f ~/.codex/AGENTS.md ]; then
-  echo "" >> ~/.codex/AGENTS.md
-  cat /tmp/imagine-skill/adapters/codex/AGENTS.md >> ~/.codex/AGENTS.md
-else
-  cp /tmp/imagine-skill/adapters/codex/AGENTS.md ~/.codex/AGENTS.md
-fi
-```
-
-### For Cursor
-
-```bash
-mkdir -p .cursor/rules
-cp /tmp/imagine-skill/adapters/cursor/imagine.mdc .cursor/rules/
-```
-
-## Step 4: Verify
-
-Run `vofy --version` to confirm `npm install -g vofy-cli@0.1.3` succeeded, then run `vofy status` to confirm authentication.
-
-## Step 5: Clean up
-
-```bash
-rm -rf /tmp/imagine-skill
-```
-
-## Done
-
-The imagine skills are now installed. You can use vofy-cli to generate images and videos.
+The generated command should include `--yes` and should not run `vofy login`.

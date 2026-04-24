@@ -3,14 +3,14 @@
 // Generates image-models.md and video-models.md from model-manifest.json
 // Preserves hand-written <!-- NOTES:model-name --> blocks across regeneration.
 //
-// Usage: node generate-model-docs.js <path-to-model-manifest.json>
+// Usage: node generate-model-docs.js <path-to-dev-feat-cli|path-to-model-manifest.json>
 
 const fs = require('fs');
 const path = require('path');
 
-const manifestPath = process.argv[2];
+const manifestPath = resolveManifestPath(firstPositionalArg());
 if (!manifestPath) {
-  console.error('Usage: node generate-model-docs.js <path-to-model-manifest.json>');
+  console.error('Usage: node generate-model-docs.js <path-to-dev-feat-cli|path-to-model-manifest.json>');
   process.exit(1);
 }
 
@@ -428,3 +428,18 @@ fs.writeFileSync(videoFile, expectedVideo);
 
 console.log(`Generated ${imageModels.length} image models → ${imageFile}`);
 console.log(`Generated ${videoModels.length} video models → ${videoFile}`);
+
+function firstPositionalArg() {
+  return process.argv.slice(2).find((arg) => !arg.startsWith('--'));
+}
+
+function resolveManifestPath(input) {
+  if (!input) return null;
+  const resolved = path.resolve(input);
+  if (fs.existsSync(resolved) && fs.statSync(resolved).isFile()) return resolved;
+
+  const nested = path.join(resolved, 'packages', 'vofy-cli', 'src', 'model-manifest.json');
+  if (fs.existsSync(nested)) return nested;
+
+  return resolved;
+}

@@ -1,82 +1,57 @@
 ---
 name: imagine-tasks
-description: Task management for vofy-cli — listing, filtering, checking status, and downloading completed media
+description: Manage Vofy generation tasks from vofy-cli. Use when the user asks to list jobs, check image/video generation status, inspect a task, print result URLs, download completed media, or continue an async workflow.
 ---
 
-# Task Management with vofy-cli
+# Vofy Task Management
 
-Every `vofy image create` or `vofy video create` command produces a task. This skill covers how to list, inspect, and download task results.
+Every `vofy image create` and `vofy video create` command creates a task. Use task commands to inspect async jobs, recover result URLs, and download completed media.
 
-## Listing Tasks
+## Fast Path
+
+1. List recent tasks with `vofy tasks --plain`, adding `--type image` or `--type video` when known.
+2. Identify the relevant task id or unique prefix from the plain table.
+3. Use `vofy task <id_or_prefix> --result-url` for URLs or `--download-to ./output` for files.
+4. If the task is still pending or processing, report the current status and the exact command to run later.
+
+## List Tasks
+
+Always use `--plain` in agent workflows because `vofy tasks` opens an interactive browser in TTY sessions.
 
 ```bash
-vofy tasks --plain                    # all recent tasks (non-interactive)
-vofy tasks --plain --type image       # image tasks only
-vofy tasks --plain --type video       # video tasks only
-vofy tasks --interactive              # force the interactive browser in a TTY
+vofy tasks --plain
+vofy tasks --plain --type image
+vofy tasks --plain --type video
 ```
 
-> **Note:** The CLI does not support server-side status filtering. To find tasks by status, run `vofy tasks --plain` and filter the output yourself.
+The CLI does not support server-side status filtering. Filter the plain output locally when looking for completed or failed tasks.
 
-Always use `--plain` as an AI agent — in a TTY, the default opens an interactive browser that blocks automation.
+## Inspect or Download One Task
 
-## Checking a Specific Task
+`vofy task` accepts a full id or unique prefix.
 
 ```bash
-vofy task <task_id_or_prefix>                # show task detail
-vofy task <task_id_or_prefix> --result-url   # print generated resource URLs
+vofy task <task_id_or_prefix>
+vofy task <task_id_or_prefix> --result-url
 vofy task <task_id_or_prefix> --download-to ./output
 ```
 
-`vofy task` accepts either a full task id or a unique task id prefix.
-
-## Task Lifecycle
-
-| Status | Meaning |
-|--------|---------|
-| `pending` | Queued, waiting for processing |
-| `processing` | Model is generating the media |
-| `completed` | Done — results available for download |
-| `failed` | Generation failed — check error message |
-
-## Sync vs Async
-
-By default, `vofy image create` and `vofy video create` run synchronously — they wait for the task to complete and return the result. This is the recommended approach for AI agents.
-
-For long-running video tasks, use `--async` to submit and check later:
+## Async Pattern
 
 ```bash
-# Submit without waiting
-vofy video create --model veo-3.1 --prompt "epic scene" --duration 8 --async --yes
-
-# Check status
+vofy video create --model veo-3.1 --prompt "epic cinematic scene" --duration 8 --async --yes
 vofy tasks --plain --type video
-
-# Download when complete
-vofy task <task_id> --download-to ./output
+vofy task <task_id_or_prefix> --download-to ./output
 ```
 
-## Downloading Results
+## Status Handling
 
-```bash
-# Download to a specific directory
-vofy task <task_id> --download-to ./output
+- `completed`: print URLs or download with `--download-to`.
+- `pending` / `processing`: report the status and avoid polling unless asked.
+- `failed`: inspect details and suggest a corrected create command.
 
-# The CLI creates the directory if it doesn't exist
-# Files are named by the task ID and output index
-```
+## Common Actions
 
-## Common Patterns for AI Agents
-
-**Check if a previous task succeeded:**
-```bash
-vofy task <task_id>
-```
-
-**Retry a failed task:** Re-run the original create command. There is no built-in retry command.
-
-**Find the latest completed task:**
-```bash
-vofy tasks --plain --type image
-```
-Look for tasks with `completed` status in the output.
+- Previous output URL: `vofy task <id_or_prefix> --result-url`
+- Download output: inspect the task id, then run `vofy task <id_or_prefix> --download-to ./output`
+- Retry failed task: re-run the original create command; there is no retry command.
