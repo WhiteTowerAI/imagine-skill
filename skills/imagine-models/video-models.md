@@ -33,15 +33,15 @@ Provider Routes:
     - image_to_video: AR: 16:9, 9:16, Res: 720p, 1080p, 4k, Dur: 4, 6, 8s
     - interpolation: AR: 16:9, 9:16, Res: 720p, 1080p, 4k, Dur: 8s
     - reference_images: AR: 16:9, 9:16, Res: 720p, 1080p, 4k, Dur: 8s
-- route_b (0.5x)
+- route_c (0.5x)
     - text_to_video: AR: 16:9, 9:16, Res: 720p, 4k, Dur: 8s
     - image_to_video: AR: 16:9, 9:16, Res: 720p, 4k, Dur: 8s
     - interpolation: AR: 16:9, 9:16, Res: 720p, 4k, Dur: 8s
     - reference_images: AR: 16:9, 9:16, Res: 720p, 4k, Dur: 8s
 
 Route-specific restrictions:
-- route_b: when duration=4/6 — Route B only supports 8s
-- route_b: when resolution=1080p — Route B does not support 1080p
+- route_c: when duration=4/6 — Route C only supports 8s
+- route_c: when resolution=1080p — Route C does not support 1080p
 
 <!-- NOTES:veo-3.1 -->
 <!-- Add hand-written tips and best practices here -->
@@ -78,14 +78,14 @@ Provider Routes:
     - text_to_video: AR: 16:9, 9:16, Res: 720p, 1080p, 4k, Dur: 4, 6, 8s
     - image_to_video: AR: 16:9, 9:16, Res: 720p, 1080p, 4k, Dur: 4, 6, 8s
     - interpolation: AR: 16:9, 9:16, Res: 720p, 1080p, 4k, Dur: 8s
-- route_b (0.5x)
+- route_c (0.5x)
     - text_to_video: AR: 16:9, 9:16, Res: 720p, 4k, Dur: 8s
     - image_to_video: AR: 16:9, 9:16, Res: 720p, 4k, Dur: 8s
     - interpolation: AR: 16:9, 9:16, Res: 720p, 4k, Dur: 8s
 
 Route-specific restrictions:
-- route_b: when duration=4/6 — Route B only supports 8s
-- route_b: when resolution=1080p — Route B does not support 1080p
+- route_c: when duration=4/6 — Route C only supports 8s
+- route_c: when resolution=1080p — Route C does not support 1080p
 
 <!-- NOTES:veo-3.1-fast -->
 <!-- Add hand-written tips and best practices here -->
@@ -136,22 +136,20 @@ Provider Routes:
 | Modes | text_to_video, image_to_video |
 | Aspect Ratios | 16:9, 9:16 |
 | Resolutions | 720p |
-| Duration | 4, 8, 10, 12, 15, 16, 20s |
+| Duration | 4, 8, 12, 16, 20s |
 | Defaults | aspect_ratio=16:9, resolution=720p, duration=4 |
 | Supports Auto | no |
 | Base Price | 40 credits |
 
 Per-mode constraints:
-  - text_to_video: AR: 16:9, 9:16, Res: 720p, Duration: 4, 8, 10, 12, 15, 16, 20s
-  - image_to_video: AR: 16:9, 9:16, Res: 720p, Duration: 4, 8, 10, 12, 15, 16, 20s
+  - text_to_video: AR: 16:9, 9:16, Res: 720p, Duration: 4, 8, 12, 16, 20s
+  - image_to_video: AR: 16:9, 9:16, Res: 720p, Duration: 4, 8, 12, 16, 20s
 
 Pricing:
 - Base: 40 credits
 - duration=4: 40 credits
 - duration=8: 80 credits
-- duration=10: 100 credits
 - duration=12: 120 credits
-- duration=15: 150 credits
 - duration=16: 160 credits
 - duration=20: 200 credits
 
@@ -159,12 +157,9 @@ Provider Routes:
 - route_a (1x)
     - text_to_video: AR: 16:9, 9:16, Res: 720p, Dur: 4, 8, 12, 16, 20s
     - image_to_video: AR: 16:9, 9:16, Res: 720p, Dur: 4, 8, 12, 16, 20s
-- route_b (0.5x)
-    - text_to_video: AR: 16:9, 9:16, Res: 720p, Dur: 4, 8, 10, 12, 15s
-    - image_to_video: AR: 16:9, 9:16, Res: 720p, Dur: 4, 8, 10, 12, 15s
 - route_c (0.5x)
-    - text_to_video: AR: 16:9, 9:16, Res: 720p, Dur: 4, 8, 10, 12, 15s
-    - image_to_video: AR: 16:9, 9:16, Res: 720p, Dur: 4, 8, 10, 12, 15s
+    - text_to_video: AR: 16:9, 9:16, Res: 720p, Dur: 4, 8, 12s
+    - image_to_video: AR: 16:9, 9:16, Res: 720p, Dur: 4, 8, 12s
 
 <!-- NOTES:sora-2 -->
 <!-- Add hand-written tips and best practices here -->
@@ -197,12 +192,6 @@ Provider Routes:
 - route_a (1x)
     - text_to_video: AR: 16:9, 9:16, Res: 720p, 1024p, 1080p, Dur: 4, 8, 12, 16, 20s
     - image_to_video: AR: 16:9, 9:16, Res: 720p, 1024p, 1080p, Dur: 4, 8, 12, 16, 20s
-- route_b (0.5x)
-    - text_to_video: AR: 16:9, 9:16, Res: 720p, 1080p, Dur: 4, 8, 12s
-    - image_to_video: AR: 16:9, 9:16, Res: 720p, 1080p, Dur: 4, 8, 12s
-- route_c (0.5x)
-    - text_to_video: AR: 16:9, 9:16, Res: 720p, 1080p, Dur: 4, 8, 12s
-    - image_to_video: AR: 16:9, 9:16, Res: 720p, 1080p, Dur: 4, 8, 12s
 
 <!-- NOTES:sora-2-pro -->
 <!-- Add hand-written tips and best practices here -->
@@ -237,10 +226,6 @@ Pricing:
 
 Provider Routes:
 - route_a (1x)
-    - text_to_video: AR: 16:9, 9:16, 1:1, 4:3, 3:4, 21:9, adaptive, Res: 480p, 720p, 1080p, Dur: 4-12s
-    - image_to_video: AR: 16:9, 9:16, 1:1, 4:3, 3:4, 21:9, adaptive, Res: 480p, 720p, 1080p, Dur: 4-12s
-    - interpolation: AR: 16:9, 9:16, 1:1, 4:3, 3:4, 21:9, adaptive, Res: 480p, 720p, 1080p, Dur: 4-12s
-- route_b (1x)
     - text_to_video: AR: 16:9, 9:16, 1:1, 4:3, 3:4, 21:9, adaptive, Res: 480p, 720p, 1080p, Dur: 4-12s
     - image_to_video: AR: 16:9, 9:16, 1:1, 4:3, 3:4, 21:9, adaptive, Res: 480p, 720p, 1080p, Dur: 4-12s
     - interpolation: AR: 16:9, 9:16, 1:1, 4:3, 3:4, 21:9, adaptive, Res: 480p, 720p, 1080p, Dur: 4-12s
@@ -408,18 +393,11 @@ Provider Routes:
     - reference_images: AR: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, Res: 480p, 720p, Dur: 1-10s
     - video_to_video: AR: 16:9, Res: 720p, Dur: 5s
     - video_extension: AR: 16:9, Res: 720p, Dur: 2-10s
-- route_b (0.5x)
-    - text_to_video: AR: 2:3, 3:2, 1:1, Res: 720p, Dur: 6, 10s
-    - image_to_video: AR: 2:3, 3:2, 1:1, Res: 720p, Dur: 6, 10s
 - route_c (0.5x)
     - text_to_video: AR: 2:3, 3:2, 1:1, Res: 720p, Dur: 10s
     - image_to_video: AR: 2:3, 3:2, 1:1, Res: 720p, Dur: 10s
 
 Route-specific restrictions:
-- route_b: when mode=reference_images/video_to_video/video_extension — Route B is not available for this mode
-- route_b: when aspect_ratio=16:9/9:16/4:3/3:4/auto — Route B only supports 1:1, 3:2, and 2:3 aspect ratios
-- route_b: when resolution=480p — Route B only supports 720p
-- route_b: when duration=1/2/3/4/5/7/8/9/11/12/13/14/15 — Route B only supports 6s and 10s
 - route_c: when mode=reference_images/video_to_video/video_extension — Route C is not available for this mode
 - route_c: when aspect_ratio=16:9/9:16/4:3/3:4/auto — Route C only supports 1:1, 3:2, and 2:3 aspect ratios
 - route_c: when resolution=480p — Route C only supports 720p
@@ -476,11 +454,6 @@ Pricing:
 - Surcharge: audio=true adds +80 credits
 
 Provider Routes:
-- route_b (0.5x)
-    - text_to_video: AR: 16:9, 9:16, 1:1, Res: 720p, 1080p, Dur: 5, 10s
-    - image_to_video: AR: 16:9, Res: 720p, 1080p, Dur: 5, 10s
-    - motion_control: AR: 16:9, Res: 720p, 1080p, Dur: 5s
-    - interpolation: AR: 16:9, Res: 1080p, Dur: 5, 10s
 - route_c (0.5x)
     - text_to_video: AR: 16:9, 9:16, 1:1, Res: 720p, 1080p, Dur: 5, 10s
     - image_to_video: AR: 16:9, Res: 720p, 1080p, Dur: 5, 10s
@@ -565,7 +538,7 @@ Pricing:
 - Surcharge: audio=true adds +55 credits
 
 Provider Routes:
-- route_b (0.5x)
+- route_c (1x)
     - text_to_video: AR: 16:9, 9:16, 1:1, Res: 720p, 1080p, Dur: 3-15s
     - image_to_video: AR: 16:9, Res: 720p, 1080p, Dur: 3-15s
     - interpolation: AR: 16:9, Res: 720p, 1080p, Dur: 3-15s
@@ -622,8 +595,6 @@ Pricing:
 - resolution=1080p: 12 credits
 
 Provider Routes:
-- route_b (0.5x)
-    - motion_control: AR: 16:9, Res: 720p, 1080p, Dur: 5s
 - route_c (0.5x)
     - motion_control: AR: 16:9, Res: 720p, 1080p, Dur: 5s
 
@@ -666,7 +637,7 @@ Pricing:
 - resolution=1080p: 16 credits
 
 Provider Routes:
-- route_b (0.5x)
+- route_c (1x)
     - motion_control: AR: 16:9, Res: 720p, 1080p, Dur: 3s
 
 Validation Rules:

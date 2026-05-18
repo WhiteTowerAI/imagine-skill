@@ -25,7 +25,7 @@ This repository gives agents (Claude Code, Codex, OpenCode, Cursor, OpenClaw...)
 ## Why imagine-skill
 
 - Works across agent environments including Codex, Claude Code, Cursor, OpenCode, and similar tools.
-- Builds on `vofy-cli`, so agents can access 22 modern image and video models through one consistent workflow.
+- Builds on `vofy-cli`, so agents can access 23 modern image and video models through one consistent workflow.
 - Reduces common agent mistakes with clear rules for authentication, non-interactive commands, downloads, and task handling.
 - Helps agents go from natural-language requests to real generated outputs with less setup and less guesswork.
 
@@ -137,7 +137,7 @@ Representative models:
 | --- | --- | --- |
 | Google | `gemini-3.1-flash-image-preview`, `gemini-3-pro-image-preview` | `veo-3.1`, `veo-3.1-fast`, `veo-3.1-lite` |
 | OpenAI | `gpt-image-2`, `gpt-image-1.5` | `sora-2`, `sora-2-pro` |
-| xAI | `grok-imagine-image`, `grok-imagine-image-pro` | `grok-imagine-video` |
+| xAI | `grok-imagine-image`, `grok-imagine-image-quality`, `grok-imagine-image-pro` | `grok-imagine-video` |
 | ByteDance | `seedream-4.5`, `seedream-5.0-lite` | `seedance-1.5-pro`, `seedance-2.0`, `seedance-2.0-fast` |
 | Kling | - | `kling-2.6`, `kling-3.0`, `kling-2.6-motion-control`, `kling-3.0-motion-control` |
 
